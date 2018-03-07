@@ -14,4 +14,5 @@ git clone https://github.com/clm1010/javascript-advanced-knowledge-point-comb.gi
   * ES6语法
     * 模块化
       * modular-syntax(模块化语法)
+      * babel-new-part(开发环境-babel)
     * 问题
