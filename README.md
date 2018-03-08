@@ -18,4 +18,7 @@ git clone https://github.com/clm1010/javascript-advanced-knowledge-point-comb.gi
       * webpack-demo(webpack处理模块化)
       * rollup-demo(rollup-打包应用)
       * 模块化总结
+    * Class
+      * JS构造函数
+      * 基本语法
     * 问题
