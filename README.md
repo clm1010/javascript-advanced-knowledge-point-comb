@@ -16,4 +16,5 @@ git clone https://github.com/clm1010/javascript-advanced-knowledge-point-comb.gi
       * modular-syntax(模块化语法)
       * babel-new-part(开发环境-babel)
       * webpack-demo(webpack处理模块化)
+      * rollup-demo(rollup-打包应用)
     * 问题
