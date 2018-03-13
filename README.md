@@ -22,4 +22,6 @@ git clone https://github.com/clm1010/javascript-advanced-knowledge-point-comb.gi
       * JS构造函数
       * Class-基本语法
       * Class-继承
+        * JS继承
+        * ES6继承
     * 问题
