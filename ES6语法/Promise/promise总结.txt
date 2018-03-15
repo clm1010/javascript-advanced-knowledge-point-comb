@@ -1,0 +1,7 @@
+new Promise实例 ,而且要 return
+
+new Promise时要传入函数，函数有resolve reject 两个参数
+
+成功时执行resolve() 失败时执行 reject()
+
+.then 监听结果
