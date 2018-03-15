@@ -27,4 +27,5 @@ git clone https://github.com/clm1010/javascript-advanced-knowledge-point-comb.gi
       * Class总结
     * Promise
       * promise-callback-hell
+      * promise语法
     * 问题
