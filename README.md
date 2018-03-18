@@ -32,3 +32,4 @@ git clone https://github.com/clm1010/javascript-advanced-knowledge-point-comb.gi
       * 代码演示
       * 常用功能总结
     * 问题
+  * 原型
