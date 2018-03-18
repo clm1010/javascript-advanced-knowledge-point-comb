@@ -1,0 +1,72 @@
+1. let和const
+let 可以定义变量，这个let定义的变量可以被重新赋值
+const 可以定义常量，这个const定义的常量不可以被重新赋值
+
+2.多行字符串和模板变量
+多行字符串传统的拼接形式
+例子：var name = 'clm',
+        age = 32,
+        html = '';
+      html += '<div>';
+      html += ' <p>多行字符串</p>';
+      html += ' <p>' + name + '</p>';
+      html += ' <p>' + age + '</p>';
+      html += '</div>'
+
+模板变量 通过反引号 ``，写多行的形式并且通过${}形式把变量镶进去。
+例子： const newName = 'limin',
+       newAge = 33;
+       const newHtml = `
+              <div>
+                <p>模板变量</p>
+                <p>${newName}</p>
+                <p>${newAge}</p>
+              </div>`;
+
+3.解构赋值
+可以用一行代码来拆解出一个对象或数组中的很多个元素，并且分别赋值。
+解构赋值先把后面的集合给解开，然后分别赋值给变量中
+例子：const objES6 = {
+      aES6: 100,
+      bES6: 200
+    };
+    const {aES6, bES6} = objES6;
+    console.log(aES6, bES6); //100 200
+    const arrES6 = ['xxx', 'yyy', 'zzz'];
+    const [xES6, yES6, zES6] = arrES6;
+    console.log(xES6, yES6, zES6); //xxx yyy zzz
+
+4.块级作用域
+普通JS没有块级作用域，它会导致变量在里面定义但是外漏的问题
+// ES6块级作用域
+例子：const objNEWES6 = {
+      a: 100,
+      b: 200
+    };
+    for (let itemES6 in objNEWES6) {
+      console.log(itemES6); // a b
+    }
+    // console.log(itemES6);//报错 itemES6 is not defined
+
+5.函数默认参数
+// 函数默认参数ES6写法
+如果b2没有参数那么默认直接返回0
+例子：function fnES6(a1,b2=0){
+      // 通过babel编译后的结果原理
+      // var b2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    }
+
+6.箭头函数
+// 箭头函数ES6写法
+例子：const arrJTES6 = [1,2,3];
+      //只有一个参数 item 不用括号
+      //函数体只有一行 item + 1
+      const arrNEW1_JTES6 = arrJTES6.map(item => item + 1);
+      console.log(arrNEW1_JTES6);// [2, 3, 4]
+
+      //但两个参数 item,index 需要括号
+      //函数体多行 console.log(item); return item+1;
+      arrJTES6.map((item,index) => {
+        console.log(item);
+        return item+1;
+      });
