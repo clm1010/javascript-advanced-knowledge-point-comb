@@ -34,6 +34,11 @@ git clone https://github.com/clm1010/javascript-advanced-knowledge-point-comb.gi
     * 问题
   * 原型
     * 实际应用-jQuery使用
-      * jQuery使用
+      * jQuery使用原型原理
     * 实际应用-Zepto使用
+      * Zepto使用原型原理
+    * 扩展性-插件机制
+      * 扩展性-插件机制-演示
     * 题目问题
+    * 题目实际应用总结
+    * 题目扩展性总结
