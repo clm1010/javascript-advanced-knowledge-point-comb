@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单线程-异步演示</title>
+</head>
+
+<body>
+  <p>async test</p>
+  <script type="text/javascript">
+    // 解决方案 异步
+    //例子1
+    console.log(100);
+    //等待2秒后执行，等待也算一件事情
+    //2000ms 之后执行
+    //先不管它，先让其它JS代码运行
+    setTimeout(function() {
+      console.log(200);
+    }, 2000);
+
+    console.log(300);
+    console.log(400);
+
+    //例子2
+  </script>
+</body>
+
+</html>
