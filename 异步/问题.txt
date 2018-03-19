@@ -1,9 +1,21 @@
-什么是单线程，和异步有什么关系
+1.什么是单线程，和异步有什么关系
+单线程 只有一个线程，只能做一件事。（同一个时间只能做一件事情）
 
-什么是event-loop
+为什么JS是单线程?
+原因 避免DOM渲染的冲突
+·浏览器需要渲染DOM
+·JS可以修改DOM结构
+·JS执行的时候，浏览器DOM渲染会暂停
+·两段JS也不能同时执行（都修改DOM就冲突了）
+·H5中有个webworker支持多线程，但是不能访问DOM
 
-是否用过jQuery的Deferred
+解决方案 就是 异步 （异步是JS单线程的一个解决方案）
+·先不管它，先让其它JS代码运行（例如：setTimeout ajax）
 
-Promise的基本使用和原理
+2.什么是event-loop
 
-async/await（和Promise的区别、联系）
+3.是否用过jQuery的Deferred
+
+4.Promise的基本使用和原理
+
+5.async/await（和Promise的区别、联系）
