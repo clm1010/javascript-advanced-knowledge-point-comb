@@ -1,0 +1,9 @@
+什么是单线程，和异步有什么关系
+
+什么是event-loop
+
+是否用过jQuery的Deferred
+
+Promise的基本使用和原理
+
+async/await（和Promise的区别、联系）
