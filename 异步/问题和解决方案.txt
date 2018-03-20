@@ -18,6 +18,12 @@
 
 
 2.什么是event-loop
+文字解释
+·事件轮询，JS实现异步的具体解放方案
+·同步代码，直接执行（不是在异步中的例如 setTimeout setInterval Ajax)
+·异步函数先放在异步队列中
+·待同步函数执行完毕，轮询执行异步队列的函数
+
 
 3.是否用过jQuery的Deferred
 
