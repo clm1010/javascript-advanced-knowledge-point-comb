@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jquery-deferred演示</title>
+</head>
+
+<body>
+  <p>jquery-deferred</p>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // jQuery1.5版本之后
+    //命令找到当前文件夹下，启动 http-server -p 8882
+
+    // 例子1
+    // 这种方式对修改开放，对扩展封闭
+    // var ajax = $.ajax({
+    //   url:'./data.json',
+    //   success: function () {
+    //     console.log('success 1');
+    //     console.log('success 2');
+    //     console.log('success 3');
+    //   },
+    //   error: function () {
+    //     console.log('error')
+    //   }
+    // })
+
+    // 例子2
+    // 对扩展开放，对修改封闭
+    // .done .fail
+    // var ajax2 = $.ajax('./data.json');
+    // ajax2.done(function(){
+    //   console.log('success 1');
+    // }).fail(function () {
+    //   console.log('fail 1');
+    // }).done(function(){
+    //   console.log('success 2');
+    // }).fail(function () {
+    //   console.log('fail 2');
+    // }).done(function(){
+    //   console.log('success 3');
+    // }).fail(function () {
+    //   console.log('fail 3');
+    // })
+
+    // 例子3
+    // 对扩展开放，对修改封闭
+    // .then
+    // 这种形式和promise语法很相近
+    var ajax3 = $.ajax('./data.json');
+    ajax3.then(function() {
+      console.log('success then 1');
+    }, function() {
+      console.log('error fail 1');
+    }).then(function() {
+      console.log('success then 2');
+    }, function() {
+      console.log('error fail 2');
+    }).then(function() {
+      console.log('success then 3');
+    }, function() {
+      console.log('error fail 3');
+    })
+  </script>
+</body>
+
+</html>
