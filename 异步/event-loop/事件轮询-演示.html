@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件轮询-演示</title>
+</head>
+
+<body>
+  <p>事件轮询</p>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // 例子1
+    // 遇到异步函数 先拿到异步队列中
+    // 主进程 中只有console.log(300);输出 300
+    // 然后事件轮询机制 到异步队列中 发现有function(){console.log(100);} 然后拿到主进程执行 输出 100
+    // 100ms 后事件轮询机制 到异步队列中 发现有function(){console.log(200);}然后拿到主进程执行 输出 200
+
+    // setTimeout(function(){
+    //   console.log(100);
+    // })
+    // setTimeout(function(){
+    //   console.log(200);
+    // },100)
+    // console.log(300);
+
+
+    //例子2
+    //命令找到当前文件夹下，启动 http-server -p 8882
+
+    // 遇到异步函数 先拿到异步队列中
+    // 主进程 中只有console.log('d');输出 d
+    // 然后事件轮询机制 到异步队列中 发现有function(){console.log('c');} 然后拿到主进程执行 输出 c
+    // 然后继续事件轮询机制，这里根据 ajax请求响应速度和请求是否成功 如果请求成功小于 1000ms 那么执行  success:function(result){console.log('a');}然后拿到主进程执行 输出 a 否则大于1000ms 这时候 步队列中找到 function(){console.log('b');}然后拿到主进程执行 输出 b
+
+    // 这里的ajax由于在本地所有所以响应很快，会输出 d a c b结果，可以忽略一般在线上响应没那么快
+    $.ajax({
+      url:'./data.json',
+      success:function(result){
+        console.log('a');
+      }
+    })
+    setTimeout(function(){
+      console.log('b');
+    },1000)
+    setTimeout(function(){
+      console.log('c');
+    })
+    console.log('d');
+  </script>
+</body>
+
+</html>
