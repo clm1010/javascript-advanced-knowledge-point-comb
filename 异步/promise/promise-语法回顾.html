@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>promise语法回顾</title>
+</head>
+<body>
+  <h1>Promise语法回顾</h1>
+  <!-- 低版本浏览器需要引入 -->
+  <!-- <script src="https://cdn.bootcss.com/bluebird/3.5.1/bluebird.min.js" charset="utf-8"></script> -->
+  <script type="text/javascript">
+    function loadImg(src) {
+      // 创建Promise实例
+      var promise = new Promise(function (resolve,reject) {
+        var img  = document.createElement('img');
+        img.onload = function(){
+          resolve(img);
+        }
+        img.onerror = function(){
+          reject(img);
+        }
+        img.src = src;
+      })
+      return promise
+    }
+
+    var src = 'https://www.apple.com/cn/iphone-x/images/overview/primary/design_gestures_fallback_small.jpg';
+    var result = loadImg(src);
+    result.then(function(img){
+      console.log(1,img.width);
+      // 这里需要返回img这样下面的then才能接收到
+      return img;
+    },function(){
+      console.log('error 1')
+    }).then(function(img){
+      console.log(2,img.height)
+    },function(){
+      console.log('error 2')
+    })
+  </script>
+</body>
+</html>
