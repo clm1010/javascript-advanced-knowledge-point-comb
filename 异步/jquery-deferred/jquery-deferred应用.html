@@ -15,6 +15,94 @@
     // jQuery1.5版本之后
     //命令找到当前文件夹下，启动 http-server -p 8882
 
+    //
+    // var wait = function () {
+    //   var task = function () {
+    //     console.log('执行完成！');
+    //   }
+    //   setTimeout(task,2000);
+    // }
+    // wait();
+
+    // jQuery-Deferred
+    // jQuery-Deferred 缺点 resolve()和reject()曝漏在外  如果 在开发中 直接调用 waitHandle() 返回的 Deferred，w.reject();那么这种方式虽然成功了，但是 主动调用 w.reject() 失败。
+    // function waitHandle() {
+    //   //创建jQuery Deferred实例
+    //   var dtd = $.Deferred();
+    //
+    //   //dtd传入wait函数中做了一部分操作，就是dtd放入task中执行
+    //   var wait = function(dtd) {
+    //     var task = function() {
+    //       console.log('执行完成！');
+    //       // 如果异步执行成功了，执行resolve()
+    //       dtd.resolve();
+    //       // 异步执行失败了，执行reject()
+    //       // dtd.reject();
+    //     }
+    //     setTimeout(task,2000);
+    //     // wait 返回dtd
+    //     return dtd;
+    //   }
+    //   //最终返回 wait 执行结果
+    //   return wait(dtd);
+    // }
+
+    // 开放封闭原则 对扩展开放，对修改封闭
+    // 开发中如果主动调用 w.reject(); 那么这样会主动执行失败。所有需要promise()
+    // var w = waitHandle();
+    // w.then(function(){
+    //   console.log('ok 1');
+    // },function(){
+    //   console.log('err 1');
+    // })
+    // w.then(function(){
+    //   console.log('ok 2');
+    // },function(){
+    //   console.log('err 2');
+    // })
+    // w.then(function(){
+    //   console.log('ok 3');
+    // },function(){
+    //   console.log('err 3');
+    // })
+
+
+    // jQuery-Deferred Promise
+    function waitHandle() {
+      var dtd = $.Deferred();
+      var wait = function(dtd) {
+        var task = function() {
+          console.log('执行完成！');
+          // 如果异步执行成功了，执行resolve()
+          dtd.resolve();
+          // 异步执行失败了，执行reject()
+          dtd.reject();
+        }
+        setTimeout(task, 2000);
+        // wait 返回dtd.promise
+        return dtd.promise();
+      }
+      return wait(dtd);
+    }
+
+    // 调用$.when()封装
+    var w = waitHandle();
+    // w.reject();这时候调用会报错
+    $.when(w).then(function(){
+      console.log('ok 1');
+    },function(){
+      console.log('err 1');
+    })
+    $.when(w).then(function(){
+      console.log('ok 2');
+    },function(){
+      console.log('err 2');
+    })
+    $.when(w).then(function(){
+      console.log('ok 3');
+    },function(){
+      console.log('err 3');
+    })
   </script>
 </body>
 
