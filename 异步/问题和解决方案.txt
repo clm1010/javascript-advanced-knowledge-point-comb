@@ -26,8 +26,37 @@
 
 
 3.是否用过jQuery的Deferred
+jQuery 1.5 后 对ajax的改变 jQuery-Deferred
+jQuery 1.5之前 这种方式对修改开放，对扩展封闭
+jQuery-Deferred 缺点 resolve()和reject()曝漏在外
+如果 在开发中 直接调用 waitHandle() 返回的 Deferred，reject();那么这种方式虽然成功了，但是 主动调用 reject() 失败。
 
-
+说明如何简单封装的、使用Deferred
+function waitHandle() {
+  var dtd = $.Deferred();
+  var wait = function(dtd){
+    var task = function(){
+      console.log("执行成功");
+      //成功返回resolve()
+      dtd.resolve();
+      //失败返回reject()
+      dtd.reject()
+    }
+    //这里调用promise() 这样外界无法调用 resolve()和reject()
+    return dtd.promise();
+  }
+  return dtd
+}
+//开放封闭原则 对扩展开放，对修改封闭
+var w = waitHandle();
+$.when(w).then(function(){
+  console.log('ok 1');
+},function(){
+  console.log('erro 1')
+})
+说明Deferred和Promise区别
+Deferred 有主动触发的函数 resolve() reject() 也有被动监听的函数 then() done() fail() 这些函数混在一起不好，容易被外界篡改
+Promise() 只能被动监听 无法主动去修改
 
 4.Promise的基本使用和原理
 
