@@ -51,4 +51,5 @@ git clone https://github.com/clm1010/javascript-advanced-knowledge-point-comb.gi
     * jquery-deferred(延迟)
       * jquery-deferred演示
       * jquery-deferred应用
+    * promise
     * 问题和解决方案
