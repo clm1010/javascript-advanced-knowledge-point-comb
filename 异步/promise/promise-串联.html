@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>promise串联</title>
+</head>
+
+<body>
+  <h1>promise串联</h1>
+  <p id="P1"></p>
+  <p id="P2"></p>
+  <!-- 低版本浏览器需要引入 -->
+  <!-- <script src="https://cdn.bootcss.com/bluebird/3.5.1/bluebird.min.js" charset="utf-8"></script> -->
+  <script type="text/javascript">
+    function loadImg(src) {
+      // 创建Promise实例
+      var promise = new Promise(function(resolve, reject) {
+        var img = document.createElement('img');
+
+        img.onload = function() {
+          resolve(img);
+        }
+        img.onerror = function() {
+          // promise捕获异常 2
+          reject('图片加载失败！');
+        }
+        img.src = src;
+      })
+      return promise;
+    }
+
+    // promise多个串联
+    // 链式操作
+    var src1 = 'https://www.apple.com/cn/iphone-x/images/overview/primary/design_gestures_fallback_small.jpg';
+    var result1 = loadImg(src1);
+    var src2 = 'https://www.apple.com/cn/iphone/home/images/ios_medium.jpg';
+    var result2 = loadImg(src2);
+    // 按照顺序执行加载
+    result1.then(function(img1) {
+      console.log('第一个图片加载完成！');
+      var p1 = document.getElementById('P1');
+      p1.appendChild(img1);
+
+      // 这里要return 第二的图片或者 需要的信息
+      return result2;
+    }).then(function(img2) {
+      console.log('第二个图片加载完成！');
+      var p2 = document.getElementById('P2');
+      p2.appendChild(img2);
+    }).catch(function(ex) {
+      console.log(ex);
+    })
+  </script>
+</body>
+
+</html>
