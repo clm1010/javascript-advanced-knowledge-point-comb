@@ -60,6 +60,13 @@ Promise() 只能被动监听 无法主动去修改
 
 4.Promise的基本使用和原理
 
+Promise状态变化
+·pending (在刚刚传入进去，还没有开始加载)
+·fulfilled (是成功)
+·rejected (是失败)
+·初始状态是 pending
+· pending 变为 fulfilled，或者 pending 变为 rejected
+·状态变化不可逆
 
 
 5.async/await（和Promise的区别、联系）
