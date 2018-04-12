@@ -16,22 +16,36 @@
       var promise = new Promise(function (resolve,reject) {
         var img  = document.createElement('img');
 
-        //自定义错误
-        throw new Error('自定义错误');
+        // //promise捕获异常 1 自定义错误 逻辑之外的错误
+        // throw new Error('自定义错误');
 
         img.onload = function(){
           resolve(img);
         }
         img.onerror = function(){
-          reject(img);
+          // promise捕获异常 2
+          reject('图片加载失败！');
         }
         img.src = src;
       })
       return promise
     }
 
-    // promise捕获异常 1
-    var src = 'https://www.apple.com/cn/iphone-x/images/overview/primary/design_gestures_fallback_small.jpg';
+    // // promise捕获异常 1
+    // var src = 'https://www.apple.com/cn/iphone-x/images/overview/primary/design_gestures_fallback_small.jpg';
+    // var result = loadImg(src);
+    // result.then(function(img){
+    //   console.log(1,img.width);
+    //   return img;
+    // }).then(function(img){
+    //   console.log(2,img.height);
+    // }).catch(function(ex){
+    //   // 统一捕获异常
+    //   console.log(ex);
+    // })
+
+    // promise捕获异常 2
+    var src = 'https://www.apple.com/cn/iphone-x/images/overview/primary/design_gestures_fallback_small-1.jpg';
     var result = loadImg(src);
     result.then(function(img){
       console.log(1,img.width);
