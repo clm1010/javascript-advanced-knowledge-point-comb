@@ -57,3 +57,6 @@ git clone https://github.com/clm1010/javascript-advanced-knowledge-point-comb.gi
       * promise-串联
       * promise-all-race
     * 问题和解决方案
+  * 虚拟DOM
+    * 什么是vdom
+      * vdom-jquery1
