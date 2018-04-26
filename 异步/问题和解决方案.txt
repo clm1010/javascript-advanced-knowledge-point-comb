@@ -68,5 +68,9 @@ Promise状态变化
 · pending 变为 fulfilled，或者 pending 变为 rejected
 ·状态变化不可逆
 
+Promise标准-then
+·Promise实例必须实现then这个方法
+·then()必须可以接收两个函数作为参数
+·then()返回的必须是一个Promise实例
 
 5.async/await（和Promise的区别、联系）
