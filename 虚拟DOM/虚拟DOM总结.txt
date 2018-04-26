@@ -1,0 +1,10 @@
+1.vdom是什么？为何会存在vdom？
+·virtual dom,虚拟DOM
+·用JS模拟DOM结构
+·DOM变化的对比，放在JS层来做
+·提高重绘性能
+
+2.vdom的如何应用，核心API是什么？
+
+
+3.介绍一下diff算法
